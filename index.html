@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLOCKMARKET | TON Domains</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #0b1020;
+  color: #f4f6ff;
+  font-family: Arial, sans-serif;
+}
+header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #252d43;
+}
+.logo { font-size: 22px; font-weight: bold; }
+.logo span { color: #8b7cff; }
+nav a {
+  color: #cbd2e5;
+  text-decoration: none;
+  margin-left: 14px;
+}
+.hero {
+  text-align: center;
+  padding: 65px 20px 35px;
+}
+.hero h1 { font-size: 38px; margin-bottom: 10px; }
+.hero p { color: #aab4cb; }
+.search {
+  width: 100%;
+  max-width: 480px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #39425e;
+  background: #151d33;
+  color: white;
+  margin-top: 20px;
+}
+.container { max-width: 1050px; margin: auto; padding: 20px; }
+.section-title { margin: 25px 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 18px;
+}
+.card {
+  background: #151d33;
+  border: 1px solid #293550;
+  border-radius: 14px;
+  padding: 20px;
+}
+.domain { font-size: 21px; font-weight: bold; }
+.price { color: #a99aff; margin: 15px 0; }
+.status { color: #65d9a0; font-size: 12px; }
+.btn {
+  display: inline-block;
+  padding: 11px 16px;
+  background: #7665f5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+}
+footer {
+  text-align: center;
+  color: #8792aa;
+  padding: 35px 15px;
+  margin-top: 40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BLOCK<span>MARKET</span></div>
+  <nav>
+    <a href="#listings">Domains</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Discover Your Next .ton Domain</h1>
+  <p>Explore domain listings across the TON ecosystem.</p>
+  <input class="search" id="search"
+    placeholder="Search TON domains..."
+    oninput="filterDomains()">
+</section>
+
+<main class="container" id="listings">
+  <h2 class="section-title">Featured Domains</h2>
+  <div class="grid" id="domainGrid"></div>
+</main>
+
+<section class="container" id="about">
+  <div class="card">
+    <h2>List Your TON Domain</h2>
+    <p>Are you a domain owner? Contact us to request a listing.</p>
+    <a class="btn"
+       href="mailto:gratseroy97@gmail.com?subject=Domain%20Listing">
+       Submit a Domain
+    </a>
+  </div>
+</section>
+
+<footer>
+  <strong>BLOCKMARKET</strong>
+  <p>Independent TON domain discovery marketplace.</p>
+  <p>Listings are informational and are not verified yet.</p>
+  <p>© 2026 BLOCKMARKET</p>
+</footer>
+
+<script>
+const domains = [
+  {name:"cryptohub.ton",price:"Contact seller"},
+  {name:"blockchain.ton",price:"Contact seller"},
+  {name:"tonresearch.ton",price:"Contact seller"},
+  {name:"netboost.ton",price:"Contact seller"}
+];
+
+function renderDomains(items) {
+  document.getElementById("domainGrid").innerHTML =
+    items.map(domain => `
+      <div class="card">
+        <div class="status">SAMPLE LISTING</div>
+        <p class="domain">${domain.name}</p>
+        <p class="price">${domain.price}</p>
+        <a class="btn" href="#about">View details</a>
+      </div>
+    `).join("");
+}
+
+function filterDomains() {
+  const query = document.getElementById("search")
+    .value.toLowerCase();
+
+  renderDomains(domains.filter(d =>
+    d.name.toLowerCase().includes(query)
+  ));
+}
+
+renderDomains(domains);
+</script>
+
+</body>
+</html>
